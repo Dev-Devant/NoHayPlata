@@ -29,15 +29,17 @@ let no, hay, plata;
 var timestamps = [2, 31, 39, 47, 54, 125, 135, 145];
 var inSequence = false;
 var seqTimer = 0;
+
+
 function preload() {
   no = loadImage("sequence/no.png");
   hay = loadImage("sequence/hay.png");
   plata = loadImage("sequence/Plata.png");
   backgroundMusic = loadSound("videoplayback.weba");
-  logo = loadImage("title.png");
-  back = loadImage("background.png");
-  tijera = loadImage("tijera.png");
-  bar = loadImage("cra.png");
+  logo = loadImage('Assets/title.png');
+  back = loadImage('Assets/background.png');
+  tijera = loadImage('Assets/tijera.png');
+  bar = loadImage('Assets/cra.png');
   fine = loadImage("lions/lionup.png");
   bad = loadImage("lions/liondown.png");
   a[0] = loadImage("fraces/aa.png");
@@ -71,6 +73,7 @@ function preload() {
 
 function setup() {
   createCanvas(700, 395);
+  document.body.addEventListener('click', iniciarContextoDeAudio);
   rectMode(CENTER);
   textAlign(CENTER, CENTER);
   imageMode(CENTER);
@@ -194,4 +197,10 @@ if (timepast < 90) {
       }
     }
   image(tijera, mouseX, mouseY);
+}
+function iniciarContextoDeAudio() {
+
+  getAudioContext().resume();
+  
+  document.body.removeEventListener('click', iniciarContextoDeAudio);
 }
